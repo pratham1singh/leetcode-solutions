@@ -1,0 +1,9 @@
+class Solution(object):
+    def singleNumber(self, nums):
+        dict1={}
+        for i in nums:
+            if i in dict1:
+                del dict1[i]
+            else:
+                dict1[i]=1
+        return list(dict1.keys())
