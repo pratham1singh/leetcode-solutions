@@ -1,0 +1,28 @@
+class Solution(object):
+    def searchRange(self, nums, target):
+        i=0
+        f=len(nums)-1
+        m=(i+f)//2
+        ans=[]
+        while i<=f:
+            print(m)
+            if nums[m]==target:
+                ans.append(m)
+                if m-1 >0 and nums[m-1]<target:
+                    k=m+1
+                    while nums[k]==target:
+                        k+=1
+                    ans.append(k-1)
+                else:
+                    k=m-1
+                    while nums[k]==target:
+                        k-=1
+                    ans.insert(0,k+1)
+                return ans
+            elif nums[m]<target:
+                i=m+1
+            else:
+                f=m-1
+            m=(i+f)//2
+        
+        return [-1,-1]
