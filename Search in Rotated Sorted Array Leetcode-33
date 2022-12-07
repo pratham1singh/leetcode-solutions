@@ -1,0 +1,27 @@
+class Solution(object):
+    def search(self, nums, target):
+        k=0
+        l=len(nums)
+        i=0
+        while i<l-1:
+            if nums[i]>nums[i+1]:
+                k=i+1
+                break
+            i+=1
+        if k!=0:
+            nums=nums[k:]+nums[:k]
+        i=0
+        f=l-1
+        m=(i+f)//2
+        print(nums)
+        while i<=f:
+            print(m)
+            if nums[m]==target:
+                return (m+k)%l
+            elif nums[m]<target:
+                i=m+1
+            else:
+                f=m-1
+            m=(i+f)//2
+        return -1
+       
