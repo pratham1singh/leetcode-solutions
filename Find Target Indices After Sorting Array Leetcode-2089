@@ -1,0 +1,13 @@
+class Solution(object):
+    def targetIndices(self, nums, target):
+        nums.sort()
+        ans=[]
+        flag=-1
+        l=len(nums)
+        for i in range(l):
+            if nums[i]==target:
+                flag=0
+                ans.append(i)
+        if flag==-1:
+            return []
+        return ans
