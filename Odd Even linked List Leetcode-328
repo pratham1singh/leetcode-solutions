@@ -1,0 +1,40 @@
+struct ListNode* oddEvenList(struct ListNode* head)
+
+{
+    if(head==NULL)
+        return head;
+    struct ListNode *even=NULL,*ptr=head,*pre=head,*opre=NULL;
+    int n=1;
+    while(ptr!=NULL)
+    {
+        if(n%2==0)
+        {
+            struct ListNode *temp=ptr;
+            pre->next=ptr->next;
+            if(even==NULL)
+            {
+                even=temp;
+                opre=temp;
+                temp->next=NULL;
+                ptr=pre->next;
+            }
+            else{
+                opre->next=temp;
+                temp->next=NULL;
+                opre=temp;
+                ptr=pre->next;
+            }
+
+
+        }
+        else
+        {
+            pre=ptr;
+            ptr=ptr->next;
+        }
+        n+=1;
+    }
+    pre->next=even;
+    return head;
+
+}
