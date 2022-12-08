@@ -1,0 +1,16 @@
+def numComponents(self, head, nums):
+        ptr=head
+        ans=0
+        c=0
+        dict1={}
+        for i in nums:
+            dict1[i]=True
+        while ptr!=None:
+            if ptr.val in dict1:
+                c=1
+            else:
+                ans+=c
+                c=0
+            ptr=ptr.next
+        ans+=c
+        return ans
