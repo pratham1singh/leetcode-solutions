@@ -1,0 +1,23 @@
+class Solution(object):
+    def dailyTemperatures(self, temperatures):
+        ans=[0]
+        l=len(temperatures)
+        list1=[l-1]
+        top=0
+        for i in range(l-2,-1,-1):
+            if temperatures[i]<temperatures[list1[-1]]:
+                ans.append(list1[-1]-i)
+                list1.append(i)
+                top+=1
+            else:
+                while top>=0 and temperatures[list1[top]]<=temperatures[i]:
+                    top-=1
+                    list1.pop()
+                if top<0:
+                    ans.append(0)
+                else:
+                    ans.append(list1[top]-i)
+                
+                list1.append(i)
+                top+=1
+        return ans[::-1]
