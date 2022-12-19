@@ -1,0 +1,47 @@
+class Solution(object):
+    def largestRectangleArea(self, arr):
+        l=len(arr)
+        listl=[-1]
+        stack=[0]
+        top=0
+        for i in range(1,l):
+            if arr[stack[-1]]>=arr[i]:
+                while top>=0 and arr[stack[top]]>=arr[i]:
+                    stack.pop()
+                    top-=1
+                if top<0:
+                    listl.append(-1)
+                else:
+                    listl.append(stack[top])
+                stack.append(i)
+                top+=1
+            else:
+                listl.append(stack[top])
+                stack.append(i)
+                top+=1
+        listr=[0]*l
+        listr[-1]=l
+        stack=[l-1]
+        top=0
+        for i in range(l-2,-1,-1):
+            if arr[stack[-1]]>=arr[i]:
+                while top>=0 and arr[stack[top]]>=arr[i]:
+                    stack.pop()
+                    top-=1
+                if top<0:
+                    listr[i]=l
+                else:
+                    listr[i]=stack[top]
+                stack.append(i)
+                top+=1
+            else:
+                listr[i]=stack[top]
+                stack.append(i)
+                top+=1
+        
+        ans=0
+        for i in range(l):
+            if ans<arr[i]*(listr[i]-listl[i]-1):
+                ans=arr[i]*(listr[i]-listl[i]-1)
+            
+        return ans
