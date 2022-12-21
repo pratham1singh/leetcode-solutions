@@ -1,0 +1,35 @@
+class StockSpanner(object):
+
+    def __init__(self):
+        self.list1=[]
+        self.m=1
+        self.l=0
+        self.dict1={}
+    def next(self, price):
+        if self.l==0:
+            self.list1.append(price)
+            self.l+=1
+            return self.m
+        else:
+
+            if self.list1[-1]>price:
+                self.dict1[self.list1[-1]]=self.m
+                self.m=1
+                self.list1.append(price)
+                self.l+=1
+                return self.m
+            else:
+                ans=1
+                self.dict1[self.list1[-1]]=self.m
+                while self.l>0 and self.list1[self.l-1]<=price:
+                   
+                    ans+=self.dict1[self.list1[self.l-1]]
+                    
+                    self.list1.pop()
+                    self.l-=1
+                    
+                self.m=ans
+                self.list1.append(price)
+                self.l+=1
+                return ans
+  
