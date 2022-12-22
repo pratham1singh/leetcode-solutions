@@ -1,0 +1,26 @@
+class Solution(object):
+    def validateStackSequences(self, pushed, popped):
+        list1=[]
+        ele=popped[0]
+        k=0
+        l2=len(popped)
+        l=0
+        for i in pushed:
+            list1.append(i)
+            l+=1
+            while k<l2-1 and l>0 and ele==list1[-1]:
+                list1.pop()
+                l-=1
+                k+=1
+                ele=popped[k]
+        print(list1,k)  
+        while k<l2:
+            if list1[-1]==popped[k]:
+                list1.pop()
+                k+=1
+            else:
+                return False
+        return True
+        
+
+
