@@ -1,0 +1,13 @@
+class Solution(object):
+    def detectCapitalUse(self, word):
+        c=0
+        for i in word:
+            if i.isupper():
+                c+=1
+        if c==0:
+            return True
+        elif c==1 and word[0].isupper():
+            return True
+        elif c==len(word):
+            return True
+        return False
