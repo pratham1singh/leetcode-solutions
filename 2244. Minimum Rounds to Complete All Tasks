@@ -1,0 +1,20 @@
+class Solution(object):
+    def minimumRounds(self, tasks):
+        dict1={}
+        ans=0
+        for i in tasks:
+            if i in dict1:
+                dict1[i]+=1
+            else:
+                dict1[i]=1
+        for i in dict1:
+            while dict1[i]!=0:
+                if dict1[i]==1:
+                    return -1
+                if dict1[i]%3==0:
+                    ans+=dict1[i]//3
+                    dict1[i]%=3
+                else:
+                    ans+=1
+                    dict1[i]-=2
+        return ans
