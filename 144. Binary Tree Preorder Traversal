@@ -1,0 +1,11 @@
+class Solution(object):
+    def preorder(self,root,list1):
+        if(root!=None):
+            list1.append(root.val)
+            self.preorder(root.left,list1)
+            
+            self.preorder(root.right,list1)
+    def preorderTraversal(self, root):
+        list1=[]
+        self.preorder(root,list1)
+        return list1
