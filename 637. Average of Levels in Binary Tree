@@ -1,0 +1,34 @@
+class Solution(object):
+    def averageOfLevels(self, root):
+        list1=[]
+        queue=[root,None]
+        l=2
+        while l!=1:
+            if queue[0]==None:
+                queue.pop(0)
+                list1.append("#")
+                queue.append(None)
+            list1.append(queue[0].val)
+            l-=1
+            if queue[0].left!=None:
+                queue.append(queue[0].left)
+                l+=1
+            if queue[0].right!=None:
+                queue.append(queue[0].right)
+                l+=1
+            queue.pop(0)
+        sum1=0
+        c=0
+        queue=[]
+        print(list1)
+        for i in list1:
+            if i!="#":
+                sum1+=i
+                c+=1
+            else:
+                queue.append(float(sum1)/float(c))
+                sum1=0
+                c=0
+        queue.append(float(sum1)/float(c))
+                
+        return queue
