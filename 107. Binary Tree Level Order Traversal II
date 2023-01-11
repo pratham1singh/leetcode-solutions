@@ -1,0 +1,36 @@
+class Solution(object):
+    def levelOrderBottom(self, root):
+        
+
+        if not root:
+            return []
+        list1=[]
+        queue=[root,None]
+        l=2
+        while l!=1:
+            if queue[0]==None:
+                queue.pop(0)
+                list1.append("#")
+                queue.append(None)
+            list1.append(queue[0].val)
+            l-=1
+            if queue[0].left!=None:
+                queue.append(queue[0].left)
+                l+=1
+            if queue[0].right!=None:
+                queue.append(queue[0].right)
+                l+=1
+            queue.pop(0)
+        temp=[]
+        queue=[]
+        print(list1)
+        for i in list1:
+            if i!="#":
+                temp.append(i)
+            else:
+                queue.append(temp)
+                temp=[]
+        queue.append(temp)
+                
+        return queue[::-1]
+        
