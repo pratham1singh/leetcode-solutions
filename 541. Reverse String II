@@ -1,0 +1,21 @@
+class Solution(object):
+    def reverseStr(self, s, k):
+        c=0
+        str1=""
+        ans=""
+        str2=""
+        for i in s:
+            if c<k:
+                str1+=i
+                c+=1
+            elif c<2*k:
+                str2+=i
+                c+=1
+            else:
+                ans+=(str1[::-1]+str2)
+                c=1
+                str1=i
+                str2=""
+        if c!=0:
+            ans+=(str1[::-1]+str2)
+        return ans
