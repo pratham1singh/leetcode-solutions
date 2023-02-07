@@ -1,0 +1,49 @@
+class Solution(object):
+    def totalFruit(self, fruits):
+        l = len(fruits)
+        if l==1:
+            return 1
+        if l==2:
+            return 2
+        i1=i2=0
+        f1=f2=1
+        a=fruits[0]
+        b=fruits[1]
+        cr=mx=2
+        k=2
+        while k<l:
+            if a==b:
+                cr+=1
+                if fruits[k]!=b:
+                    i2=k-1
+                    b=fruits[k]
+                    f1=f2=k
+                else:
+                    i2=k
+            elif fruits[k]!=a and fruits[k]!=b:
+                if mx<cr:
+                    mx=cr
+                if fruits[k-1]==b:
+                    print("C",cr,i1,i2)
+                    cr=cr-(i2-i1+1)
+                    a=b
+                    i1=i2+1
+                    i2=k-1
+                    b=fruits[k]
+                    f1=f2=k
+                    print("w",cr)
+                else:
+                    cr=cr-(f2-i1+1)
+                    i1=f2+1
+                    b=fruits[k]
+                    f1=f2=k
+                cr+=1
+            else:
+                cr+=1
+                if fruits[k]==a:
+                    i2=k
+                else:
+                    f2=k
+            print(a,b,cr)
+            k+=1
+        return max(cr,mx)
