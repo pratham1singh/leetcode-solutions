@@ -1,0 +1,12 @@
+class Solution(object):
+    dict1={}
+    def climbStairs(self, n):
+        if self.dict1.get(n)!=None:
+            return self.dict1[n]
+        if n==0:
+            return 1
+        if n<0:
+            return 0
+        else:
+            self.dict1[n]= self.climbStairs(n-1) + self.climbStairs(n-2)
+            return self.dict1[n]
