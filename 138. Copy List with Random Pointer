@@ -1,0 +1,133 @@
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+
+class Solution {
+    public Node copyRandomList(Node head) {
+        if(head==null)
+        return null;
+        Node head2=null,ptr=head,last=head;
+        while(ptr!=null)
+        {
+            Node temp=new Node(ptr.val);
+            if(head2==null)
+            {
+                head2=temp;
+                last=temp;
+            }
+            else{
+                last.next=temp;
+                last=temp;
+            }
+            ptr=ptr.next;
+
+        }
+        ptr=head;
+        Node ptr2=head2;
+        while(ptr!=null)
+        {
+            if(ptr.random==null)
+            {
+                ptr2.random=null;
+            }
+            else{
+                Node temp=head;
+                int i=0,ind=0;
+                while(temp!=ptr.random){
+                    ind+=1;
+                    temp=temp.next;
+                }
+                temp=head2;
+                while(temp!=null&&i!=ind)
+                {
+                    temp=temp.next;
+                    i+=1;
+
+                }
+                ptr2.random=temp;
+            }
+            ptr=ptr.next;
+            ptr2=ptr2.next;
+
+        }
+       return head2; 
+    }
+    
+}/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+
+class Solution {
+    public Node copyRandomList(Node head) {
+        if(head==null)
+        return null;
+        Node head2=null,ptr=head,last=head;
+        while(ptr!=null)
+        {
+            Node temp=new Node(ptr.val);
+            if(head2==null)
+            {
+                head2=temp;
+                last=temp;
+            }
+            else{
+                last.next=temp;
+                last=temp;
+            }
+            ptr=ptr.next;
+
+        }
+        ptr=head;
+        Node ptr2=head2;
+        while(ptr!=null)
+        {
+            if(ptr.random==null)
+            {
+                ptr2.random=null;
+            }
+            else{
+                Node temp=head;
+                int i=0,ind=0;
+                while(temp!=ptr.random){
+                    ind+=1;
+                    temp=temp.next;
+                }
+                temp=head2;
+                while(temp!=null&&i!=ind)
+                {
+                    temp=temp.next;
+                    i+=1;
+
+                }
+                ptr2.random=temp;
+            }
+            ptr=ptr.next;
+            ptr2=ptr2.next;
+
+        }
+       return head2; 
+    }
+    
+}
